@@ -28,11 +28,8 @@ for i in range(0, cubes):
     for j in range(0, i):
         if weight[j] > weight[i] and LDS[i] < LDS[j] + 1:
             LDS[i] = LDS[j] + 1
-            numbers.add(weight[i])
-            numbers.add(weight[j])
+           
             if empty == True or weight[j] == min(numbers):
-
-                if empty == True: empty = False
 
                 for k in range(0, 6):
                     R2 = 255 - colors[i][k][0]
@@ -41,6 +38,11 @@ for i in range(0, cubes):
                     negative = (R2, G2, B2)
 
                     if negative in colors[j]:
+
+                        numbers.add(weight[i])
+                        numbers.add(weight[j])
+                        if empty == True: empty = False 
+
                         temp = colors[j].index(negative)
                         if k < 2:
                             result += dimension[i][0]
@@ -56,6 +58,7 @@ for i in range(0, cubes):
                         else:
                             result += dimension[j][1]
 
+                
                         break
                 
 print(f"the height of tower is : {result}")
